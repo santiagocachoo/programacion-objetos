@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-int hola() {
+int main() {
     float peso, altura;
 
     cout << "Ingrese peso en kg: ";
