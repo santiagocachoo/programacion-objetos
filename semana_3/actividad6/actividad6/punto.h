@@ -10,6 +10,7 @@ private:
     double y;
     
 public:
+    Point();
     // constructor
     Point(double x=0, double y = 0);
     
@@ -21,7 +22,7 @@ public:
     void setX(double x);
     void setY(double y);
     
-    double distance(Point& otro);
+    double distance(Point punto);
 };
 
 #endif

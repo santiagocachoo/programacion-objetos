@@ -21,7 +21,7 @@ void Point::setY(double y) {
     this->y = y;
 }
 
-double Point::distance(Point &otro) {
+double Point::distance(Point otro) {
     return sqrt(pow(otro.x - x, 2) + pow(otro.y - y, 2));
 }
 
