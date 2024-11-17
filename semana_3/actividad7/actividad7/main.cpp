@@ -9,6 +9,7 @@ using namespace std;
 
 //main
 int main() {
+    
     int x, y;
     Triangle t1;
     cout << "El area del triangulo por default es " << t1.area()<< " y su perimetro es " << t1.perimeter() << endl;

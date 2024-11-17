@@ -23,4 +23,6 @@ double Triangle::area() {
     d = sqrt(s * (s - a) * (s - b) * (s - c));
     return d;
 }
+
+
 Triangle::~Triangle(){}
