@@ -1,7 +1,7 @@
-/*Created by
--Guadalupe Elena Fierros Valenzuela A01255712
--Santiago Cacho Herrera A01255853
-*/
+// Created by
+// Guadalupe Elena Fierros Valenzuela A01255712
+// Santiago Cacho Herrera A01255853
+
 
 #include "Triangle.h"
 #include <iostream>
