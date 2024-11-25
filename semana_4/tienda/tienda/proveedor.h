@@ -14,15 +14,15 @@ private:
 public:
     // constructores
     Proveedor();
-    Proveedor(string nombre, string ciudad);
+    Proveedor(string, string);
     
     // getters
     string getNombre();
     string getCiudad();
     
-    // getters
-    void setNombre(string nombre);
-    void setCiudad(string ciudad);
+    // setters
+    void setNombre(string);
+    void setCiudad(string);
     
     // metodo para imprimir
     void imprimir();

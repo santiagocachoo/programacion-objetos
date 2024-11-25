@@ -3,26 +3,35 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
+#include "producto.h"
 
 using namespace std;
 
 class Tienda {
 private:
     string nombre;
+    vector<Producto> productos;
     
 public:
     // constructores
     Tienda();
-    Tienda(string nombre);
+    Tienda(string);
     
     // setter
-    void setName(string nombre);
+    void setName(string);
     
     // getter
     string getName();
+    Producto& getProducto(int);
     
     // metodo para imprimir
     void imprimir();
+    
+    // metodos adicionales
+    void adicionarProducto(Producto&);
+    unsigned long getCant();
+    string getProveedorProducto(int);
     
     // destructor
     ~Tienda();

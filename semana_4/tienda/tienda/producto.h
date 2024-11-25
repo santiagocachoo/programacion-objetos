@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include "proveedor.h"
 
 using namespace std;
 
@@ -13,25 +14,30 @@ private:
     int cantidad;
     double precio;
     
+    Proveedor proveedor;
+    
 public:
     // constructores
     Producto();
-    Producto(string id, string nombre, int cantidad, double precio);
+    Producto(string, string, int, double, Proveedor&);
     
     // getters
     string getNombre();
     string getId();
     int getCantidad();
     double getPrecio();
+    string getNombreProveedor();
     
     // setters
-    void setName(string nombre);
-    void setPrecio(double precio);
+    void setNombre(string);
+    void setCantidad(int);
+    void setPrecio(double);
+    void setCiudadProveedor(string);
     
     // metodos de clase
     bool estaEnExistencia();
-    void abastecer(int cantidad);
-    double vender(int cantidad);
+    void abastecer(int);
+    double vender(int);
     void imprimir();
     
     // destructor

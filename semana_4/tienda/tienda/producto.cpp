@@ -9,7 +9,7 @@ Producto::Producto() {
 }
 
 // constructor parametrizado
-Producto::Producto(string id, string nombre, int cantidad, double precio) : id(id), nombre(nombre), cantidad(cantidad), precio(precio) {}
+Producto::Producto(string id, string nombre, int cantidad, double precio, Proveedor& proveedor) : id(id), nombre(nombre), cantidad(cantidad), precio(precio), proveedor(proveedor) {}
 
 // getters
 string Producto::getNombre() {
@@ -27,13 +27,25 @@ double Producto::getPrecio() {
     return precio;
 }
 
+string Producto::getNombreProveedor() {
+    return proveedor.getNombre();
+}
+
 // setters
-void Producto::setName(string nombre) {
+void Producto::setNombre(string nombre) {
     this->nombre = nombre;
+}
+
+void Producto::setCantidad(int cantidad) {
+    this->cantidad = cantidad;
 }
 
 void Producto::setPrecio(double precio) {
     this->precio = precio;
+}
+
+void Producto::setCiudadProveedor(string ciudad) {
+    proveedor.setCiudad(ciudad);
 }
 
 // metodos de clase
@@ -42,18 +54,10 @@ bool Producto::estaEnExistencia() {
 }
 
 void Producto::abastecer(int cantidad) {
-    if (cantidad > 0){
         this->cantidad += cantidad;
-    } else {
-        cout<<"Error: No se puede abastecer con una cantidad negativa"<<endl;
-    }
 }
 
 double Producto::vender(int cantidad) {
-    if (cantidad <= 0) {
-        cout<<"Error: Cantidad a vender debe ser mayor que 0"<<endl;
-        return -1;
-    }
     if (cantidad <= this->cantidad) {
         this->cantidad -= cantidad;
         return cantidad * precio;
@@ -67,6 +71,8 @@ void Producto::imprimir() {
     cout<<"Nombre :"<<nombre<<endl;
     cout<<"Cantidad: "<<cantidad<<endl;
     cout<<"Precio: "<<precio<<endl;
+    cout<<"Proveedor: "<<proveedor.getNombre()<<endl;
+    cout<<"Ciudad de proveedor: "<<proveedor.getCiudad()<<endl;
 }
 
 // destructor
