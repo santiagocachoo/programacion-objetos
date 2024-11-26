@@ -40,10 +40,11 @@ void PaqueteTuristico::setPrecio(double precio) {
 bool PaqueteTuristico::reservar(int cantViajeros) {
     if (cantViajeros <= 0) {
         cout<<"Cantidad de viajeros no valida"<<endl;
+        return false;
     }
-    if (cantViajeros < capacidad) {
-        this->capacidad -= cantViajeros;
-        this->cantReservas += cantViajeros;
+    if (cantViajeros <= capacidad) {
+        capacidad -= cantViajeros;
+        cantReservas += cantViajeros;
         return true;
     } else {
         return false;
@@ -51,7 +52,7 @@ bool PaqueteTuristico::reservar(int cantViajeros) {
 }
 
 void PaqueteTuristico::incCapacidad(int aumento) {
-    this->capacidad += aumento;
+    capacidad += aumento;
 }
 
 int PaqueteTuristico::obtDisponibilidad() {
