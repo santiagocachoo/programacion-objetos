@@ -1,5 +1,6 @@
-// programa para manejar clases de fracciones
-// Santiago Cacho Herrera A01255853
+// Programa para manejar clases de fracciones
+// Santiago Cacho Herrera A01255853 A01255712
+// Guadalupe Elena Fierros Valenzuela
 // 25/11/24
 
 #include <iostream>
@@ -9,14 +10,15 @@
 using namespace std;
 
 int main() {
+    // declarar numero de fracciones en vector
     int n;
     cout<<"Cuantas fracciones desea ingresar? ";
     cin>>n;
     
-    // vector para almacenar fracciones
+    // crear vector para almacenar fracciones
     vector<Fraccion> fracciones;
     
-    // solicitar fracciones de usuario
+    // solicitar fracciones al usuario
     for (int i = 0; i < n; i++) {
         int num, den;
         cout<<"Introduce el numerador de la fraccion "<<i+1<<": ";
@@ -30,6 +32,7 @@ int main() {
             cin>>den;
         }
         cout<<endl;
+        
         // crear fraccion y añadirla al vector
         fracciones.push_back(Fraccion(num, den));
     }
@@ -49,12 +52,10 @@ int main() {
         cout<<endl;
     } else {
         cout<<"No hay suficientes fracciones para hacer la suma"<<endl;
-        cout<<endl;
     }
     
     // prueba de calcular valor real
     cout<<"Valor real de la fraccion 1: "<<fracciones[0].calcValorReal()<<endl;
-    cout<<endl;
     
     return 0;
 }

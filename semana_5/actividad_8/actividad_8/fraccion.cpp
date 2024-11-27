@@ -53,7 +53,7 @@ Fraccion Fraccion::sumarFraccion(Fraccion f2) {
 }
 
 void Fraccion::imprimeFraccion() {
-    cout<<"La fraccion es: "<<num<<"/"<<den<<endl;
+    cout<<num<<"/"<<den<<endl;
 }
 
 Fraccion::~Fraccion() {}

@@ -9,7 +9,7 @@ PaqueteTuristico::PaqueteTuristico() {
 }
 
 // constructor parametrizado
-PaqueteTuristico::PaqueteTuristico(string destino, double precio, int capacidad) : destino(destino), precio(precio), capacidad(capacidad){}
+PaqueteTuristico::PaqueteTuristico(string destino, double precio, int capacidad) : destino(destino), precio(precio), capacidad(capacidad), cantReservas(0) {}
 
 // getters
 string PaqueteTuristico::getDestino() {
