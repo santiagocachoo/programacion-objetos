@@ -21,7 +21,6 @@ public:
     Prestamo(int, int, string, string);
     
     // getters
-    int getId();
     int getLibroId();
     int getUsuarioId();
     string getFechaPrestamo();

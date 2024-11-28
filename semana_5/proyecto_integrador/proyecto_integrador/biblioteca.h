@@ -20,18 +20,21 @@ public:
     // metodos para gestionar libros
     void agregarLibro(Libro libro);
     void mostrarLibrosDisponibles();
-    Libro* buscarLibro(int libroId);
+    Libro& buscarLibro(int libroId);
     
     // metodos para gestionar usuarios
     void registrarUsuario(Usuario usuario);
-    Usuario* buscarUsuario(int usuarioId);
+    Usuario& buscarUsuario(int usuarioId);
     
     // metodos para gestionar prestamos
     void realizarPrestamo(int libroId, int usuarioId, string fechaPrestamo, string fechaDevolucion);
-    void devolverLibro(int libroId);
+    void devolverLibro(int libroId, int usuarioId);
     
-    // imprimir
-    void imprimir();
+    // metodos para imprimir
+    void imprimirBiblioteca();
+    void imprimirUsuario(int usuarioId);
+    void imprimirLibro(int libroId);
+    void imprimirPrestamo(int libroId, int usuarioId);
     
     // destructor
     ~Biblioteca();

@@ -11,8 +11,6 @@ private:
     int id;
     string titulo;
     string autor;
-    string isbn;
-    string estado;
     int cantidad;;
     
 public:
@@ -20,18 +18,15 @@ public:
     Libro();
     
     // constructor parametrizado
-    Libro(int, string, string, string, string, int);
+    Libro(int id, string titulo, string autor, int cantidad);
     
     // getters
     int getId();
     string getTitulo();
     string getAutor();
-    string getIsbn();
-    string getEstado();
     int getCantidad();
     
     // setters
-    void setEstado(string estado);
     void setCantidad(int cantidad);
     
     // mostrar informacion del libro

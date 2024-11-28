@@ -5,13 +5,11 @@ Libro::Libro() {
     id = 0;
     titulo = "";
     autor = "";
-    isbn = "";
-    estado = "Disponible";
     cantidad = 0;
 }
 
 // constructor parametrizado
-Libro::Libro(int id, string titulo, string autor, string isbn, string estado, int cantidad) : id(id), titulo(titulo), autor(autor), isbn(isbn), estado(estado), cantidad(cantidad) {}
+Libro::Libro(int id, string titulo, string autor, int cantidad) : id(id), titulo(titulo), autor(autor), cantidad(cantidad) {}
 
 // getters
 int Libro::getId() {
@@ -26,29 +24,17 @@ string Libro::getAutor() {
     return autor;
 }
 
-string Libro::getIsbn() {
-    return isbn;
-}
-
-string Libro::getEstado() {
-    return estado;
-}
-
 int Libro::getCantidad() {
     return cantidad;
 }
 
 // setters
-void Libro::setEstado(string estado) {
-    if (estado == "Disponible" || estado == "Prestado") {
-        this->estado = estado;
-    } else {
-        cout<<"Estado invalido. Manteniendo estado actual: "<<this->estado<<endl;
-    }
-}
-
 void Libro::setCantidad(int cantidad) {
-    this->cantidad = cantidad;
+    if (cantidad >= 0) {
+        this->cantidad = cantidad;
+    } else {
+        cout<<"Error: La canidad no puede ser negativa. Manteniendo cantidad actual: "<<this->cantidad<<endl;
+    }
 }
 
 // imprimir
@@ -56,8 +42,6 @@ void Libro::imprimir() {
     cout<<"ID: "<<id<<endl;
     cout<<"Titulo: "<<titulo<<endl;
     cout<<"Autor: "<<autor<<endl;
-    cout<<"ISBN: "<<isbn<<endl;
-    cout<<"Estado: "<<estado<<endl;
     cout<<"Cantidad de copias disponibles: "<<cantidad<<endl;
 }
 

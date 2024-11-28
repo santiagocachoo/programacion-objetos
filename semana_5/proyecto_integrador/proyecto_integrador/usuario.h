@@ -18,7 +18,7 @@ public:
     Usuario();
     
     // constructor parametrizado
-    Usuario(int, string);
+    Usuario(int id, string nombre);
     
     // getters
     int getId();
