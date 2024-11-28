@@ -20,18 +20,18 @@ string Usuario::getNombre() {
     return nombre;
 }
 
-vector<int> Usuario::getHistorial() {
+vector<Prestamo*> Usuario::getHistorial() {
     return historial;
 }
 
 // metodos para gestionar historial de prestamos
-void Usuario::agregarPrestamo(int libroId) {
-    historial.push_back(libroId);
+void Usuario::agregarPrestamo(Prestamo* prestamo) {
+    historial.push_back(prestamo);
 }
 
 void Usuario::eliminarPrestamo(int libroId) {
-    for (auto i = historial.begin(); i != historial.end(); ++i) {
-        if (*i == libroId) {
+    for (auto i = historial.begin(); i!= historial.end(); ++i) {
+        if ((*i)->getLibroId() == libroId) {
             historial.erase(i);
             break;
         }
@@ -43,11 +43,12 @@ void Usuario::imprimir() {
     cout<<"ID: "<<id<<endl;
     cout<<"Nombre: "<<nombre<<endl;
     cout<<"Historial de prestamos: ";
+    cout<<endl;
     if (historial.empty()) {
         cout<<"No tiene prestamos registrados"<<endl;
     } else {
-        for (int libroId : historial) {
-            cout<<libroId<<" ";
+        for (Prestamo* prestamo : historial) {
+            prestamo->imprimir();
         }
         cout<<endl;
     }

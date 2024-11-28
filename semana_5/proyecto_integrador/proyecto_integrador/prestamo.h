@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "date.h"
 
 using namespace std;
 
@@ -10,24 +11,24 @@ class Prestamo {
 private:
     int libroId;
     int usuarioId;
-    string fechaPrestamo;
-    string fechaDevolucion;
+    Date fechaPrestamo;
+    Date fechaDevolucion;
+    string estado;
     
-public:
-    // constructor default
-    Prestamo();
-    
+public:    
     // constructor parametrizado
-    Prestamo(int, int, string, string);
+    Prestamo(int, int, Date, Date, string estado = "prestado");
     
     // getters
     int getLibroId();
     int getUsuarioId();
-    string getFechaPrestamo();
-    string getFechaDevolucion();
+    Date getFechaPrestamo();
+    Date getFechaDevolucion();
+    string getEstado();
     
     // setters
-    void setFechaDevolucion(string fechaDevolucion);
+    void setFechaDevolucion(Date fechaDevolucion);
+    void setEstado(string estado);
     
     // imprimir
     void imprimir();

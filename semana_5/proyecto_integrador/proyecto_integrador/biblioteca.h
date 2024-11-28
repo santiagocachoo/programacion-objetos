@@ -7,6 +7,7 @@
 #include "libro.h"
 #include "usuario.h"
 #include "prestamo.h"
+#include "date.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ public:
     Usuario& buscarUsuario(int usuarioId);
     
     // metodos para gestionar prestamos
-    void realizarPrestamo(int libroId, int usuarioId, string fechaPrestamo, string fechaDevolucion);
+    void realizarPrestamo(int libroId, int usuarioId, Date fechaPrestamo, Date fechaDevolucion);
     void devolverLibro(int libroId, int usuarioId);
     
     // metodos para imprimir

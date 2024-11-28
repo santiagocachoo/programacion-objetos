@@ -7,6 +7,7 @@ void Biblioteca::agregarLibro(Libro libro) {
         return;
     }
     libros.push_back(libro);
+    cout<<endl;
     cout<<"Libro agregado: "<<libro.getTitulo()<<endl;
 }
 
@@ -32,7 +33,8 @@ Libro& Biblioteca::buscarLibro(int libroId) {
 // metodos para gestionar usuarios
 void Biblioteca::registrarUsuario(Usuario usuario) {
     usuarios.push_back(usuario);
-    cout<<"Usuario registrado "<<usuario.getNombre()<<endl;
+    cout<<endl;
+    cout<<"Usuario registrado: "<<usuario.getNombre()<<endl;
 }
 
 Usuario& Biblioteca::buscarUsuario(int usuarioId) {
@@ -45,36 +47,37 @@ Usuario& Biblioteca::buscarUsuario(int usuarioId) {
 }
 
 // metodos para gestionar prestamos
-void Biblioteca::realizarPrestamo(int libroId, int usuarioId, string fechaPrestamo, string fechaDevolucion) {
+void Biblioteca::realizarPrestamo(int libroId, int usuarioId, Date fechaPrestamo, Date fechaDevolucion) {
     try {
         Libro& libro = buscarLibro(libroId);
         Usuario& usuario = buscarUsuario(usuarioId);
 
         if (libro.getCantidad() <= 0) {
-            cout << "Error: No hay copias disponibles para el libro" << endl;
+            cout<<"Error: No hay copias disponibles para el libro"<<endl;
             return;
         }
 
         libro.setCantidad(libro.getCantidad() - 1);
-        usuario.agregarPrestamo(libroId);
-        prestamos.push_back(Prestamo(libroId, usuario.getId(), fechaPrestamo, fechaDevolucion));
-        cout << "Prestamo realizado exitosamente" << endl;
+        Prestamo prestamo(libroId, usuarioId, fechaPrestamo, fechaDevolucion);
+        prestamos.push_back(prestamo);
+        usuario.agregarPrestamo(&prestamos.back());
+        cout<<"Prestamo realizado exitosamente"<<endl;
 
     } catch (const invalid_argument& e) {
         cout << e.what() << endl;
     }
 }
 
+
 void Biblioteca::devolverLibro(int libroId, int usuarioId) {
     try {
         Libro& libro = buscarLibro(libroId);
-        Usuario& usuario = buscarUsuario(usuarioId);
 
         for (auto i = prestamos.begin(); i != prestamos.end(); ++i) {
             if (i->getLibroId() == libroId && i->getUsuarioId() == usuarioId) {
-                usuario.eliminarPrestamo(libroId);
                 libro.setCantidad(libro.getCantidad() + 1);
-                prestamos.erase(i);
+                i->setEstado("devuelto");
+                cout<<"Devolucion registrada exitosamente"<<endl;
                 return;
             }
         }
@@ -90,7 +93,13 @@ void Biblioteca::imprimirBiblioteca() {
     cout<<"Estado de la biblioteca: "<<endl;
     cout<<"Total de libros: "<<libros.size()<<endl;
     cout<<"Total de usuarios: "<<usuarios.size()<<endl;
-    cout<<"Prestamos activos: "<<prestamos.size()<<endl;
+    int prestamosActivos = 0;
+    for (Prestamo& prestamo : prestamos) {
+        if (prestamo.getEstado() == "prestado") {
+            ++prestamosActivos;
+        }
+    }
+    cout<<"Prestamos activos: "<<prestamosActivos<<endl;
 }
 
 void Biblioteca::imprimirUsuario(int usuarioId) {

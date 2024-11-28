@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include "prestamo.h"
 
 using namespace std;
 
@@ -11,7 +12,7 @@ class Usuario {
 private:
     int id;
     string nombre;
-    vector<int> historial;
+    vector<Prestamo*> historial;
     
 public:
     // constructor default
@@ -23,10 +24,10 @@ public:
     // getters
     int getId();
     string getNombre();
-    vector<int> getHistorial();
+    vector<Prestamo*> getHistorial();
     
     // metodos para prestamos
-    void agregarPrestamo(int libroId);
+    void agregarPrestamo(Prestamo* prestamo);
     void eliminarPrestamo(int libroId);
     
     // imprimir

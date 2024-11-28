@@ -1,15 +1,7 @@
 #include "prestamo.h"
 
-// constructor default
-Prestamo::Prestamo() {
-    libroId = 0;
-    usuarioId = 0;
-    fechaPrestamo = "";
-    fechaDevolucion = "";
-}
-
 // constructor parametrizado
-Prestamo::Prestamo(int libroId, int usuarioId, string fechaPrestamo, string fechaDevolucion) : libroId(libroId), usuarioId(usuarioId), fechaPrestamo(fechaPrestamo), fechaDevolucion(fechaDevolucion) {}
+Prestamo::Prestamo(int libroId, int usuarioId, Date fechaPrestamo, Date fechaDevolucion, string estado) : libroId(libroId), usuarioId(usuarioId), fechaPrestamo(fechaPrestamo), fechaDevolucion(fechaDevolucion), estado(estado) {}
 
 // getters
 
@@ -21,25 +13,38 @@ int Prestamo::getUsuarioId() {
     return usuarioId;
 }
 
-string Prestamo::getFechaPrestamo() {
+Date Prestamo::getFechaPrestamo() {
     return fechaPrestamo;
 }
 
-string Prestamo::getFechaDevolucion() {
+Date Prestamo::getFechaDevolucion() {
     return fechaDevolucion;
 }
 
+string Prestamo::getEstado() {
+    return estado;
+}
+
 // setters
-void Prestamo::setFechaDevolucion(string fechaDevolucion) {
+void Prestamo::setFechaDevolucion(Date fechaDevolucion) {
     this->fechaDevolucion = fechaDevolucion;
+}
+
+void Prestamo::setEstado(string estado) {
+    this->estado = estado;
 }
 
 // imprimir
 void Prestamo::imprimir() {
     cout<<"ID del libro prestado: "<<libroId<<endl;
     cout<<"ID del usuario: "<<usuarioId<<endl;
-    cout<<"Fecha del prestamo: "<<fechaPrestamo<<endl;
-    cout<<"Fecha de devolucion: "<<fechaDevolucion<<endl;
+    cout<<"Fecha del prestamo: ";
+    fechaPrestamo.imprimir();
+    cout<<endl;
+    cout<<"Fecha de devolucion: ";
+    fechaDevolucion.imprimir();
+    cout<<endl;
+    cout<<"Estado: "<<estado<<endl;
 }
 
 // destructor

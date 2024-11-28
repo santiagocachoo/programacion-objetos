@@ -10,24 +10,26 @@ int main() {
     int opcion;
     
     do {
-            // mostrar menu
-            cout<<"Sistema de Gestión de Biblioteca"<<endl;
-            cout<<"1. Agregar un libro"<<endl;
-            cout<<"2. Registrar un usuario"<<endl;
-            cout<<"3. Realizar un préstamo"<<endl;
-            cout<<"4. Devolver un libro"<<endl;
-            cout<<"5. Mostrar libros disponibles"<<endl;
-            cout<<"6. Salir"<<endl;
-            cout<<"Seleccione una opción: ";
-            cin>>opcion;
-        while (cin.fail() || opcion < 1 || opcion > 6) {
-            cout<<"Error: Ingrese un numero valido entre 1 y 6: ";
+        // mostrar menu
+        cout<<"Sistema de Gestión de Biblioteca"<<endl;
+        cout<<"1. Agregar un libro"<<endl;
+        cout<<"2. Registrar un usuario"<<endl;
+        cout<<"3. Realizar un préstamo"<<endl;
+        cout<<"4. Devolver un libro"<<endl;
+        cout<<"5. Mostrar libros disponibles"<<endl;
+        cout<<"6. Mostrar informacion de un usuario"<<endl;
+        cout<<"7. Salir"<<endl;
+        cout<<"Seleccione una opción: ";
+        cin>>opcion;
+        cout<<endl;
+        while (cin.fail() || opcion < 1 || opcion > 7) {
+            cout<<"Error: Ingrese un numero valido entre 1 y 7: ";
             cin.clear();
             cin.ignore();
             cin>>opcion;
         }
 
-            // Procesar la opción seleccionada
+            // procesar la opción seleccionada
             switch (opcion) {
                 case 1: {
                     // agregar un libro
@@ -94,7 +96,7 @@ int main() {
                 case 3: {
                     // realizar un préstamo
                     int libroId, usuarioId;
-                    string fechaPrestamo, fechaDevolucion;
+                    Date fechaPrestamo, fechaDevolucion;
                     
                     // validar id de libro
                     cout<<"Ingrese ID del libro: ";
@@ -117,10 +119,10 @@ int main() {
                     }
                     
                     cin.ignore();
-                    cout<<"Ingrese fecha de préstamo (DD/MM/AAAA): ";
-                    getline(cin, fechaPrestamo);
-                    cout<<"Ingrese fecha de devolución (DD/MM/AAAA): ";
-                    getline(cin, fechaDevolucion);
+                    cout<<"Ingrese fecha de préstamo (DD MM AAAA): ";
+                    cin>>fechaPrestamo.dia>>fechaPrestamo.mes>>fechaPrestamo.anio;
+                    cout<<"Ingrese fecha de devolución (DD MM AAAA): ";
+                    cin>>fechaDevolucion.dia>>fechaDevolucion.mes>>fechaDevolucion.anio;
                     miBiblioteca.realizarPrestamo(libroId, usuarioId, fechaPrestamo, fechaDevolucion);
                     cout<<endl;
                     break;
@@ -162,14 +164,32 @@ int main() {
                     miBiblioteca.mostrarLibrosDisponibles();
                     break;
                 }
-                case 6:
+                
+                case 6: {
+                    // mostrar informacion de un usuario
+                    int usuarioId;
+                    cout<<"Ingrese ID del usuario: ";
+                    cin>>usuarioId;
+                    
+                    try {
+                        Usuario& usuario = miBiblioteca.buscarUsuario(usuarioId);
+                        usuario.imprimir();
+                    } catch (invalid_argument& e) {
+                        cout<<e.what()<<endl;
+                    }
+                    cout<<endl;
+                    break;
+                }
+                    
+                case 7:
+                    // salir del sistema
                     cout<<"Saliendo del sistema. ¡Adios!"<<endl;
                     break;
                 default:
                     cout<<"Opción inválida. Intente nuevamente."<<endl;
                     break;
             }
-        } while (opcion != 6);
+        } while (opcion != 7);
 
         return 0;
     }
